@@ -15,7 +15,8 @@
         height: 100%;
       }
      
-      html, body {
+      html, body {0
+
         height: 100%;
         margin: 0;
         padding: 0;
@@ -68,11 +69,23 @@
    <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+        <form>
+  <fieldset disabled>
+    <legend>Disabled fieldset example</legend>
+    <div class="mb-3">
+                  <label for="disabledTextInput" class="form-label">Latitud</label>
+                  <input type="text" id="latitud" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label for="disabledSelect" class="form-label">Longitud</label>
+                  <input type="text" id="longitud" class="form-control">
+                </div>
+                
+                <button type="submit" class="btn-outline-secondary"">Aceptar</button>
+              </fieldset>
+            </form>
+                  </div>
+                </div>
   </div>
   <div class="col-sm-4">
     <div class="card">
@@ -140,18 +153,38 @@
 
            var map;
            function initMap() {
+               var latitud: 22.145283;
+               var longitud: -101.015192;
+
+               coordenadas = {
+                   lng: longitud,
+                   lat: latitud,
+               };
+               generarMapa(coordenadas);
+           }
+
+           function generarMapa(coordenadas) {
+
+      
                map = new google.maps.Map(document.getElementById('map'), {
-                   center: { lat: 22.145283, lng: - 101.015192 },
-                   zoom: 13,
+                   center: new google.maps.latLng(coordenadas.lat, coordenadas.lng),
+                   zoom: 13, 
                });
                var marker = new google.maps.Marker({
-                   position: { lat: 22.145283, lng: - 101.015192 },
+                   position: new google.maps.latLng(coordenadas.lat, coordenadas.lng),
                    map: map,
                    title: 'Zona Universitaria'
                });
                var infowindow = new google.maps.InfoWindow({
                    content: "<p>Coordenadas:" + marker.getPosition() + "</p>",
                });
+
+               // Evento para tomar valor de coordenadas al arrastrrse
+               marker.addListener('dragend', function (event) {
+                   document.getElementById('latitud').value = this.getPosition().lat();
+                   document.getElementById('longitud').value = this.getPosition().lng();
+               });
+
 
                // This event listener calls addMarker() when the map is clicked.
                google.maps.event.addListener(map, "click", (event) => {
