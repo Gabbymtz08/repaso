@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -8,14 +9,13 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
       
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfxPD7VdQYeMQCOL5BhBjKSLZSdbvwRCM&callback=initMap"
-      async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfxPD7VdQYeMQCOL5BhBjKSLZSdbvwRCM&callback=initMap"async defer></script>
 	<style> 
   	  #map {
         height: 100%;
       }
      
-      html, body {0
+      html, body {
 
         height: 100%;
         margin: 0;
@@ -153,12 +153,13 @@
 
            var map;
            function initMap() {
-               var latitud: 22.145283;
-               var longitud: -101.015192;
+               var latitud= 22.14599;
+               var longitud= -101.01476;
 
                coordenadas = {
-                   lng: longitud,
                    lat: latitud,
+                   lng: longitud,
+                 
                };
                generarMapa(coordenadas);
            }
@@ -167,12 +168,13 @@
 
       
                map = new google.maps.Map(document.getElementById('map'), {
-                   center: new google.maps.latLng(coordenadas.lat, coordenadas.lng),
-                   zoom: 13, 
+                   center: new google.maps.LatLng(coordenadas.lat, coordenadas.lng),
+                   zoom: 13,
                });
-               var marker = new google.maps.Marker({
+               marker = new google.maps.Marker({
                    position: new google.maps.latLng(coordenadas.lat, coordenadas.lng),
                    map: map,
+                   draggable: true,
                    title: 'Zona Universitaria'
                });
                var infowindow = new google.maps.InfoWindow({
