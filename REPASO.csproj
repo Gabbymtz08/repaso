@@ -67,9 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="img\imagp3.jfif" />
-    <Content Include="img\imap.jpg" />
-    <Content Include="img\imgp2.jfif" />
+    <Content Include="img\1.jpg" />
+    <Content Include="img\2.jpg" />
+    <Content Include="img\3.jpg" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
